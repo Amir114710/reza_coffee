@@ -1,0 +1,152 @@
+#cantainer-form{
+    height:12em;
+    background-color:rgb(27, 27, 27);
+}
+.text-form
+{
+    margin-top:1em;
+    font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif!important;
+    color: #fff;
+    text-align: center;
+    font-size:35px;
+    font-weight:bold;
+}
+.text-form-detail{
+    text-align: center;
+    color: #fff;
+    margin-top:1em;
+}
+.site-footer{
+    margin-top:18em;
+}
+.form-registration{
+    position:absolute;
+    left: 34em;
+    margin-top:1em;
+}
+.phone-regiestraion{
+    height: 2.5em;
+    width:20em;
+    background:none;
+    border-radius:5px;
+    border:1px solid #fff;
+    color:#fff;
+    font-family:Georgia, 'Times New Roman', Times, serif!important;
+    margin-left: 11em;
+}
+.email-regiestraion{
+    height: 2.5em;
+    width:20em;
+    background:none;
+    border-radius:5px;
+    border:1px solid #fff;
+    margin-left: 1em;
+    color:#fff;
+    font-family:Georgia, 'Times New Roman', Times, serif!important;
+}
+.subject-regiestraion{
+    height: 2.5em;
+    width:41.2em;
+    background:none;
+    border-radius:5px;
+    border:1px solid #fff;
+    margin-top: 1em;
+    color:#fff;
+    font-family:Georgia, 'Times New Roman', Times, serif!important;
+}
+.message-regiestraion{
+    height: 10em;
+    width:41.2em;
+    background:none;
+    border-radius:5px;
+    border:1px solid #fff;
+    margin-top: 1em;
+    color:#fff;
+    font-family:Georgia, 'Times New Roman', Times, serif!important;
+}
+#btn{
+    margin-top: 1em;
+    margin-left: 5em;
+    border: 1px solid #fff;
+    color: #fff;
+    transition:0.2s linear;
+}
+#btn:hover{
+    transform: scale(1.2);
+}
+.br{
+    display: none;
+}
+.forget-password{
+    position: relative;
+    top:-4.5em
+}
+@media screen and (max-width: 750px) {
+    body {
+        overflow-x: hidden!important;
+    }
+    #cantainer-form{
+        height:17em;
+    }
+    .site-footer{
+        margin-top:26em;
+    }
+    .form-registration{
+        margin-top:2em;
+        margin-left: -33em;
+    }
+    .phone-regiestraion {
+        height: 2.5em;
+        width: 24em;
+        background: none;
+        border-radius: 5px;
+        border: 1px solid rgb(255, 255, 255);
+        color: rgb(255, 255, 255);
+        font-family: Georgia, "Times New Roman", Times, serif !important;
+        margin-left: 0em;
+    }
+    .email-regiestraion {
+        margin-left: -0em;
+        height: 2.5em;
+        width: 24em;
+        background: none;
+        border-radius: 5px;
+        border: 1px solid #fff;
+        color: #fff;
+        font-family: Georgia, 'Times New Roman', Times, serif!important;
+    }
+    .br{
+        display: block;
+    }
+    .subject-regiestraion {
+        height: 2.5em;
+        width: 24em;
+        background: none;
+        border-radius: 5px;
+        border: 1px solid #fff;
+        margin-top: 1em;
+        color: #fff;
+        font-family: Georgia, 'Times New Roman', Times, serif!important;
+    }
+    .message-regiestraion {
+        height: 10em;
+        width: 24em;
+        background: none;
+        border-radius: 5px;
+        border: 1px solid #fff;
+        margin-top: 1em;
+        color: #fff;
+        font-family: Georgia, 'Times New Roman', Times, serif!important;
+    }
+    #btn {
+        margin-top: 0em;
+        border: 1px solid #fff;
+        width: 24em;
+        color: #fff;
+        transition: 0.2s linear;
+        margin-left: 0em;
+    }
+    .forget-password{
+        top: -4em;
+    }
+}

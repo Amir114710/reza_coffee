@@ -1,0 +1,76 @@
+body{
+    min-height: 2vh!important;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif!important;
+}
+.content{
+    position: relative;
+    top: 7em;
+    left: 8.5em;
+    background-color: rgb(33, 33, 33);
+    width: 85%!important;
+    height: 35em!important;
+}
+.detail-image{
+    width: 100%;
+    height:100%;
+    border: 1px solid white !important;
+    position: relative;
+    top: 1.5em;
+    left: 1em;
+}
+.post-title{
+    color: white;
+    position: relative;
+    left: 5%;
+    top: 3em;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif!important;
+}
+.site-footer{
+    margin-top:15em!important;
+}
+.star{
+    margin-top:1.5em;
+    font-size:15px;
+}
+.like-view{
+    display: flex;
+    margin-top:-0.7em
+}
+#like-post{
+    font-size:25px;
+    margin-top:1.3em;
+}
+.view{
+    font-size:25px;
+    margin-top:1.1em;
+    margin-left: 0.5em;
+}
+.discription{
+    margin-top:1.5em;
+    width:95%;
+    height:16em ;
+}
+.body-2{
+    width:100%;
+    height:100%;
+    font-size: 20px;
+}
+@media screen and (max-width: 750px) {
+    .content{
+        position: relative;
+        top: 2em;
+        left:2em;
+        background-color: rgb(33, 33, 33);
+        width: 85%!important;
+        height: 48em !important;
+    }
+    .detail-image {
+        padding: 1em;
+        width: 100%;
+        height: 100%;
+        border: none!important;
+        position: relative;
+        top: 1.5em;
+        left: 0em;
+    }
+}

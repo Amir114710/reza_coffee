@@ -1,0 +1,69 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static "css/style.css" %}">
+    <link rel="stylesheet" href="{% static "css/responsive-menu.css" %}">
+    <link rel="stylesheet" href="{% static "css/form-style.css" %}">
+    <link rel="stylesheet" href="{% static "css/our-menu.css" %}">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://kit.fontawesome.com/1cd78581a0.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" id="elementor-post-5219-css" href="https://patiotime.loftocean.com/demo8/wp-content/uploads/sites/5/elementor/css/post-5219.css?ver=1652427962" type="text/css" media="all">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <title>{% block title %}{% endblock %}</title>
+</head>
+<body>
+    <header>
+        <div class="container-fluid" id="navbar-header">
+            <div class="header-image" id="image">
+                <a href="{% url 'home_app:home' %}"><img src="{% static "img/Untitled-1-Recovered.png" %}" alt="" width="100%" height="100%"></a>
+            </div>
+            <div class="navbar" id="ul-style">
+                <ul class="nav">
+                    <li><a href="{%  url 'home_app:home' %}"><i class="fa-solid fa-house"></i>Home</a></li>
+                    <li><a href="#container"><i class="fa-solid fa-address-card"></i>About</a></li>
+                    <li><a href="#menu"><i class="fa-solid fa-bars" class="bars-icon"></i>OurMenu</a></li>
+                    <li><a href="#contact"><i class="fa-solid fa-id-badge"></i>ContactUs</a></li>
+                </ul>
+                <!-- <ul class="ul-style">
+                    <li class="li-style"><i class="fa-solid fa-house"></i>Home</li>
+                    <li class="li-style"><i class="fa-solid fa-address-card"></i>About</li>
+                    <li class="li-style"><i class="fa-solid fa-bars" class="bars-icon"></i>Menu</li>
+                    <li class="li-style"><i class="fa-brands fa-product-hunt"></i>Products</li>
+                    <li class="li-style"><i class="fa-solid fa-id-badge"></i>ContactUs</li>
+                </ul> -->
+            </div>
+            <div class="right-of-menu">
+                <i class="fa-solid fa-magnifying-glass" id="search" onclick="search()"></i>
+                <i class="fa-solid fa-heart" id="like"></i>
+                <div class="dropdown">
+                    <button class="dropbtn"><span style="position: relative;top:-0.7em;"></span><i class="fa-solid fa-user" id="user"><i class="fa-solid fa-caret-down"></i></i></span></button>
+                    <!-- <span style="position: relative;top:-0.1em;"><i class="fa-solid fa-user"></i><i class="fa-solid fa-caret-down"></i></span> -->
+                    <div class="dropdown-content">
+                    {% if request.user.is_authenticated %}
+                    <a href="#"><i class="fa-solid fa-user"></i>profile</a>
+                    <a href="#"><i class="fa-solid fa-heart"></i>favorite</a>
+                    <a href="{% url 'account:logout' %}"><i class="fa-solid fa-arrow-right-from-bracket" style="margin-right:0.3em;"></i>logout</a>
+                    {% else %}
+                    <a href="{% url 'account:otp' %}"><i class="fa-solid fa-right-to-bracket" style="margin-right:0.3em;"></i>login/register</a>
+                    {% endif %}
+                    </div>
+                </div>
+                <i class="fa-solid fa-circle-xmark" id="close-5"onclick="search_close()"></i>
+            </div>
+        </div>
+        <div class="container-fluid" id="container-fluid-5">
+                <form action="">
+                    <!-- <a href=""><button class="btn btn-primary" id="close-5">close</button></a> -->
+                    <input type="text" placeholder="Search" name="q" id="q" class="search-input">
+                </form>
+        </div>
+  </heade>

@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+{% load static %}
+{% block title %}
+Otp_Registerations
+{% endblock %}
+{% block content %}
+<section>
+    <div class="container-fluid" id="cantainer-form">
+        <p class="text-form">OTP REGISTERATION</p>
+        <p class="text-form-detail">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quis suscipit sint<br> numquam beatae repudiandae aut explicabo mollitia</p>
+    </div>
+    <div class="form-registration">
+        <form action="" method="post" class="form-login">
+            {% csrf_token %}
+            {% for error in form.errors.phone %}
+                <p class="alert alert-danger">{{error}}</p>
+            {% endfor %}
+            {{form.phone}}
+            <div class="br"><br></div>
+          <br><br>
+            <button class="btn btn-block" id="btn">send</button>
+        </form>
+    </div>
+</section>
+{% endblock %}

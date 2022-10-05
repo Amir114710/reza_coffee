@@ -11,3 +11,54 @@
   .Us-style{
     color: #fff;
   }
+  .menu .box-container .box:hover>*{
+    color:black;
+  }
+  .likecount-viewcount{
+    display:flex;
+    position: relative;
+    left: 5.9em!important;
+  }
+  #like-count{
+    color: #fff!important;
+    font-size:12px;
+    margin-top:0.5em;
+    /* margin-left: -3.5em!important; */
+  }
+  #view-count{
+    margin-left: 0.7em;
+    color: #fff!important;
+    font-size:12px;
+    margin-top:0.5em;
+  }
+  #menu-name-3{
+    margin-top:-30em!important;
+  }
+  .pagination a {
+    color: rgb(255, 255, 255);
+    float: left;
+    padding: 8px 16px;
+    text-decoration: none;
+    transition: background-color .3s;
+    border: 1px solid #ced4da;
+    margin-top:5em;
+  }
+  
+  .pagination a.active {
+    background-color: rgb(255, 173, 30);
+    color: rgb(255, 255, 255);
+  }
+  
+  .pagination a:hover:not(.active) {background-color: rgb(43, 43, 43);}
+  @media screen and (max-width: 750px) {
+    #menu-name-3{
+      margin-top:-37em!important;
+    }
+    .likecount-viewcount {
+      display: flex;
+      position: relative;
+      /* border: 1px solid; */
+      left: 9.9em!important;
+      width: 5em;
+    }
+  }

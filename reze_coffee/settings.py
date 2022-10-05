@@ -43,11 +43,14 @@ INSTALLED_APPS = [
     #My apps:
     'home_app',
     'account',
+    'blog',
     #my packeges:
     'social_django',
     'widget_tweaks',
     'django_render_partial',
     'webpush',
+    'django_social_share',
+    'star_ratings',
 ]
 
 MIDDLEWARE = [
@@ -58,6 +61,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'blog.middleware.SaveIPAddressMiddleware',
 ]
 
 ROOT_URLCONF = 'reze_coffee.urls'
@@ -190,3 +194,5 @@ SIMPLE_JWT = {
     'SLIDING_TOKEN_LIFETIME': timedelta(minutes=5),
     'SLIDING_TOKEN_REFRESH_LIFETIME': timedelta(days=1),
 }
+STAR_RATINGS_STAR_HEIGHT = 16
+STAR_RATINGS_ANONYMOUS = False

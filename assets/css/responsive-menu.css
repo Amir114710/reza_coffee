@@ -331,7 +331,7 @@ body {
     font-family: Georgia, 'Times New Roman', Times, serif!important;
     position: absolute;
     left: 20%;
-    top: 122em;
+    top: 93em;
   }
   .btn2-see-more {
     width: 10em;
@@ -343,5 +343,15 @@ body {
     border: none;
     transition: 0.2s linear;
     border-radius: 5px;
+  }
+  .contact .row .map-contact{
+    flex: 1 1 35rem ;
+    width: 95%;
+    height:25em;
+    padding:5em;
+    object-fit: cover;
+  }
+  .contact.row{
+    padding:2em;
   }
 }

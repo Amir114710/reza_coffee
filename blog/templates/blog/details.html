@@ -1,0 +1,72 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load social_share %}
+{% load ratings %}
+{% block title %}
+    {{ posts.title_for_show }}
+{% endblock %}
+{% block content %}
+<section>
+  <div class="content">
+    <div class="row">
+      <div class="col-sm-6">
+        <div class="detail-image">
+          <img src="{{ post.image.url }}" alt="" width="100%" , height="100%">
+        </div>
+      </div>
+      <div class="col-sm-6">
+        <div class="post-title">
+          <h1>{{ post.important_title }}</h1>
+          <div class="star">
+            {% ratings post %}
+          </div>
+          <div class="like-view">
+            <div class="like">
+              {% if request.user.is_authenticated == True %}
+              <div>  
+                  {% if is_liked %}
+                  <i id="like-post" onclick="likes('{{post.slug}}' , '{{post.id}}')" style="color:red" class="fa-solid fa-heart"></i></a>                                    
+                  {% else %}
+                  <i id="like-post" onclick="likes('{{post.slug}}' , '{{post.id}}')" style="color:red" class="fa-regular fa-heart"></i></a>
+                  {% endif %}
+              </div>
+              {% else %}
+              <p class="alert alert-danger"dir="rtl" style="margin-top:1.5em;">برای لایک کردن این پست لطفا <a href="{% url 'account:otp' %}">وارد سایت بشوید</a></p>
+              {% endif %}
+            </div>
+            <div class="view">
+              <i class="fa fa-eye" id="view">{{ post.views }}</i>
+            </div>
+          </div>
+          <div class="discription">
+            <p class="body-2">{{ post.discription }}</p>
+          </div>
+          <div class="price-discount">
+            <p class="price-2">${{post.price}}</p>
+            <p class="discount-2"><del>${{post.discount}}</del></p>
+          </div>
+          <div class="share">
+            <i class="fa fa-share-alt" aria-hidden="true"></i>
+            <span>{% post_to_whatsapp post.get_absolute_url "Whatsapp" %}</span>
+            <span class="email-share">{% send_email "post" "plese see the new post in the site" post.get_absolute_url "Email" %}</span>
+            <span class="telegram-share">{% post_to_telegram "plese see the new post in the site" post.get_absolute_url "Telegram" %}</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<script>
+  function likes(slug , id){
+    var element = document.getElementById("like-post")
+    $.get(`/like/${slug}/${id}`).then(response =>{
+        if(response['response'] === "liked"){
+            element.className = "fa-solid fa-heart"
+        }
+        else{
+            element.className = "fa-regular fa-heart"
+        }
+    })
+}
+</script>
+{% endblock %}

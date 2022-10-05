@@ -1,5 +1,6 @@
 {% extends "base.html" %}
 {% load static %}
+{% load ratings %}
 {% block title %}
 Home
 {% endblock %}
@@ -64,97 +65,28 @@ Home
       </div>
 </section>
 <section>
-  <div class="menu-us-name">
+  <div class="menu-us-name" id="menu-style-4">
       <span class="Us-style">OUR</span>MENU
   </div>
   <br><br><br><br><br><br><br>
-  <section class="menu" id="menu">        
-      <div class="box-container">
-  
-          <div class="box">
-              <img src="{% static "img/coffee-g973d84095_1920.jpg" %}" alt="">
-              <h3>tasty and healthy</h3>
-              <div class="price">$15.99 <span class="discount-style">20.99</span></div>
-              <a href="" class="btn btn-danger">add to cart</a>
-          </div>
-  
-  
-          <div class="box">
-              <img src="{% static "img/coffee-g973d84095_1920.jpg" %}" alt="">
-              <h3>tasty and healthy</h3>
-              <div class="price">$15.99 <span class="discount-style">20.99</span></div>
-              <a href="" class="btn btn-danger">add to cart</a>
-          </div>
-  
-          <div class="box">
-              <img src="{% static "img/coffee-g973d84095_1920.jpg" %}" alt="">
-              <h3>tasty and healthy</h3>
-              <div class="price">$15.99 <span class="discount-style">20.99</span></div>
-              <a href="" class="btn btn-danger">add to cart</a>
-          </div>
-  
-          <div class="box">
-              <img src="{% static "img/coffee-g973d84095_1920.jpg" %}" alt="">
-              <h3>tasty and healthy</h3>
-              <div class="price">$15.99 <span class="discount-style">20.99</span></div>
-              <a href="" class="btn btn-danger">add to cart</a>
-          </div>
-  
-  
-  
-          <div class="box">
-              <img src="{% static "img/coffee-g973d84095_1920.jpg" %}" alt="">
-              <h3>tasty and healthy</h3>
-              <div class="price">$15.99 <span class="discount-style">20.99</span></div>
-              <a href="" class="btn btn-danger">add to cart</a>
-          </div>
-  
-          <div class="box">
-              <img src="{% static "img/coffee-g973d84095_1920.jpg" %}" alt="">
-              <h3>tasty and healthy</h3>
-              <div class="price">$15.99 <span class="discount-style">20.99</span></div>
-              <a href="" class="btn btn-danger">add to cart</a>
-          </div>
-          
-          <div class="box">
-              <img src="{% static "img/coffee-g973d84095_1920.jpg" %}" alt="">
-              <h3>tasty and healthy</h3>
-              <div class="price">$15.99 <span class="discount-style">20.99</span></div>
-              <a href="" class="btn btn-danger">add to cart</a>
-          </div>
-          <div class="box">
-              <img src="{% static "img/coffee-g973d84095_1920.jpg" %}" alt="">
-              <h3>tasty and healthy</h3>
-              <div class="price">$15.99 <span class="discount-style">20.99</span></div>
-              <a href="" class="btn btn-danger">add to cart</a>
-          </div>
-          <div class="box">
-              <img src="{% static "img/coffee-g973d84095_1920.jpg" %}" alt="">
-              <h3>tasty and healthy</h3>
-              <div class="price">$15.99 <span class="discount-style">20.99</span></div>
-              <a href="" class="btn btn-danger">add to cart</a>
-          </div>
-          <div class="box">
-              <img src="{% static "img/coffee-g973d84095_1920.jpg" %}" alt="">
-              <h3>tasty and healthy</h3>
-              <div class="price">$15.99 <span class="discount-style">20.99</span></div>
-              <a href="" class="btn btn-danger">add to cart</a>
-          </div>
-          <div class="box">
-              <img src="{% static "img/coffee-g973d84095_1920.jpg" %}" alt="">
-              <h3>tasty and healthy</h3>
-              <div class="price">$15.99 <span class="discount-style">20.99</span></div>
-              <a href="" class="btn btn-danger">add to cart</a>
-          </div>
-          <div class="box">
-              <img src="{% static "img/coffee-g973d84095_1920.jpg" %}" alt="">
-              <h3>tasty and healthy</h3>
-              <div class="price">$15.99 <span class="discount-style">20.99</span></div>
-              <a href="" class="btn btn-danger">add to cart</a>
-          </div>
-      </div>
-      <button class="btn2-see-more"><a href="Our-menu.html" style="color: white;">see more</a></button>
-  </section>
+  <section class="menu">        
+    <div class="box-container">
+        {% for post in posts_6 %}
+        <div class="box">
+            <img src="{{post.image.url}}" alt="">
+            <h3><a href="details/{{ post.slug }}">{{post.important_title}}</a></h3>
+            <div class="price">${{post.price}}<span class="discount-style">${{post.discount}}</span></div>
+            <div class="likecount-viewcount">
+              <i class="fa-regular fa-heart" id="like-count">{{post.likes2.count}}</i>
+              <i class="fa-regular fa-eye" id="view-count">{{post.views}}</i>
+            </div>
+            <br>
+            {% ratings post %}
+        </div>
+        {% endfor %}
+    </div>
+    <a href="{% url 'blog:ourmenu' %}"><button class="btn2-see-more">see more</button></a>
+    </section>
 </section>
 <section>
   <div class="contact-us-name">

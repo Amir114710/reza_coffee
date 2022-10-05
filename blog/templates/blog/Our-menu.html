@@ -1,0 +1,47 @@
+{% extends "base.html"%}
+{% load static %}
+{% load ratings %}
+{% block title %}
+blog
+{% endblock %}
+{% block content %}
+<section class="menu" id="menu">
+    <div class="menu-us-name" id="menu-name-3">
+        <span class="Us-style">OUR</span>MENU
+    </div>
+    <br><br><br><br><br><br><br>        
+    <div class="box-container">
+        {% for post in posts %}
+        <div class="box">
+            <img src="{{post.image.url}}" alt="">
+            <h3><a href="details/{{ post.slug }}">{{post.important_title}}</a></h3>
+            <div class="price">${{post.price}}<span class="discount-style">${{post.discount}}</span></div>
+            <div class="likecount-viewcount">
+                <i class="fa-regular fa-heart" id="like-count">{{post.likes2.count}}</i>
+                <i class="fa-regular fa-eye" id="view-count">{{post.views}}</i>
+            </div>
+            <br>
+            {% ratings post %}
+        </div>
+        {% endfor %}
+    </div>
+    <!-- <button class="btn2-see-more">see more</button> -->
+</section>
+{% if is_paginated %}
+<div class="d-flex align-items-center justify-content-center mb-3 pagination">
+    {% if page_obj.has_previous %}
+        <a href="?page={{ page_obj.previous_page_number }}{% if request.GET.search %}&search={{request.GET.search}}{% endif %}">&laquo;</a>
+    {% endif %}
+    {% for i in page_obj.paginator.page_range %}
+          {% if page_obj.number == i %}
+          <a class="active" href="?page={{i}}{% if request.GET.search %}&search={{request.GET.search}}{% endif %}">{{ i }}</a>
+          {% else %}
+            <a href="?page={{i}}{% if request.GET.search %}&search={{request.GET.search}}{% endif %}">{{ i }}</a>
+          {% endif %}
+      {% endfor %}
+    {% if page_obj.has_next %}
+        <a href="?page={{ page_obj.next_page_number }}{% if request.GET.search %}&search={{request.GET.search}}{% endif %}">&raquo;</a>
+    {% endif %}
+</div>
+{% endif %}
+{% endblock %}

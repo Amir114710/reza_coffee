@@ -1,7 +1,6 @@
 from django.db import models
 from django.urls import reverse
 from django.utils.text import slugify
-
 from account.models import User
 class Category(models.Model):
     title = models.CharField(max_length=100, verbose_name='نام دسته بندی ها')
@@ -26,19 +25,19 @@ class IPAddress(models.Model):
 
 class Post(models.Model):
     categories = models.ManyToManyField(Category , related_name='posts' , verbose_name='دسته بندی ها')
-    title_for_show = models.CharField(max_length=100, verbose_name='نام کالا')
-    important_title = models.CharField(max_length=100)
+    title_for_show = models.CharField(max_length=100, verbose_name='نام کالا', null=True)
+    important_title = models.CharField(max_length=100,verbose_name='نام کالا به اینگلیسی' , null=True)
     discription = models.TextField(null=True, verbose_name='توضیحات')
-    discount = models.IntegerField(null=True, verbose_name='قیمت اصلی')
-    price = models.IntegerField(null=True, verbose_name='قیمت تخفیف خورده')
+    discount = models.IntegerField(null=True, verbose_name='قیمت تخفیف خورده')
+    price = models.IntegerField(null=True, verbose_name='قیمت اصلی')
     views = models.IntegerField(null=True, verbose_name='تعداد بازدید پست')
     image = models.ImageField(null=True, verbose_name='عکس کالا' , upload_to='product_image')
     slug = models.SlugField(null=True,blank=True)
-    created = models.DateTimeField(auto_now_add=True)
+    created = models.DateTimeField(auto_now_add=True , null=True)
     hits = models.ManyToManyField(IPAddress , blank=True , related_name='hits' , verbose_name='بازدید ها')
 
     def __str__(self):
-        return f'{self.title_for_show}--{self.discription}'
+        return f'{self.important_title}--{self.discription}'
 
     class Meta:
         ordering = ('-created',)
@@ -51,7 +50,10 @@ class Post(models.Model):
     
     def get_absolute_url(self):
         return reverse('blog:detail' , kwargs={'slug':self.slug})
-        
+    
+    def admin_image(self):
+        return '<img src="%s"/>' % self.image
+    admin_image.allow_tags = True
 class Like(models.Model):
     users = models.ForeignKey(User, related_name='likes2' , on_delete=models.CASCADE , verbose_name = 'کاربر')
     posts = models.ForeignKey(Post, related_name='likes2' , on_delete=models.CASCADE , verbose_name = 'مقاله')
@@ -66,3 +68,32 @@ class Like(models.Model):
         verbose_name_plural = "لایک ها"
         ordering = ("-created",)
 
+
+class Poster(models.Model):
+	title = models.CharField(max_length=255, verbose_name = 'مبحث')
+	image = models.ImageField(upload_to='poster_home_page', verbose_name = 'عکس مربوطه')
+	created = models.DateTimeField(auto_now_add=True)
+
+	def __str__(self):
+		return self.title
+
+	class Meta:
+		verbose_name_plural ="پوستر ها"
+		verbose_name = "پوستر"
+
+class Comments(models.Model):
+    user = models.ForeignKey(User , related_name="comment" , on_delete=models.CASCADE , verbose_name = 'کاربر')
+    posts = models.ForeignKey(Post, related_name="comment" , on_delete=models.CASCADE, verbose_name = 'پست')
+
+    parent = models.ForeignKey('self' , on_delete=models.CASCADE , related_name = 'replies' , null=True , blank=True, verbose_name = 'پست جواب داده شده')
+
+    message = models.CharField(max_length=50 , null=True, blank=True, verbose_name = 'نظرات')
+    created = models.DateTimeField(auto_now_add=True)
+
+    def __str__(self):
+        return f'{self.user.phone}-{self.posts.important_title}'
+
+    class Meta:
+        verbose_name = 'کامنت'
+        verbose_name_plural = 'کامنت ها'
+        ordering = ('-created',)

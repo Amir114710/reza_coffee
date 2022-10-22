@@ -30,15 +30,17 @@ Home
                   Your browser does not support HTML video.
               </video>
             </div>
+            {% for poster in Poster %}
             <div class="item">
-              <img src="{% static "img/coffee-beans-g2f144416d_1920.jpg" %}" alt="Chicago" id="image-style-carousel-my">
-              <p class="title-first-image">___Thank you for___<br>will shopping in my site</p>
+              <img src="{{poster.image.url}}" alt="Chicago" id="image-style-carousel-my">
+              <p class="title-first-image">{{poster.title}}</p>
             </div>
-          
+            {% endfor %}
+<!--           
             <div class="item">
               <img src="{% static "img/coffee-g973d84095_1920.jpg" %}" alt="New york" id="image-style-carousel-my">
               <p class="title-first-image">___We Hope to___<br>get ok of this site</p>
-            </div>
+            </div> -->
           </div>
         </div>
       </div>

@@ -56,9 +56,10 @@
     }
     .likecount-viewcount {
       display: flex;
-      position: relative;
+      position:absolute!important;
       /* border: 1px solid; */
-      left: 9.9em!important;
+      left: 11em!important;
       width: 5em;
+      margin-top:-0.5em!important;
     }
   }

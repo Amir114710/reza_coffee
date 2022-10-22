@@ -72,8 +72,6 @@ class UserAdmin(BaseUserAdmin):
     search_fields = ('phone',)
     ordering = ('phone',)
     filter_horizontal = ()
-
-
 # Now register the new UserAdmin...
 admin.site.register(User, UserAdmin)
 # ... and, since we're not using Django's built-in permissions,

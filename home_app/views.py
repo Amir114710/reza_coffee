@@ -1,6 +1,7 @@
 from django.shortcuts import render
 from django.views.generic import TemplateView
 from blog.models import Post
+from blog.models import Poster
 from django.core.paginator import Paginator
 
 class HomeView(TemplateView):
@@ -8,6 +9,7 @@ class HomeView(TemplateView):
     def get_context_data(self):
         context = super(HomeView, self).get_context_data()
         context['posts_6'] = Post.objects.all()[:12]
+        context['Poster'] = Poster.objects.all()
         return context
     
 class SearchBox(TemplateView):

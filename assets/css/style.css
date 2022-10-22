@@ -20,7 +20,7 @@ body{
     top: -5em;
     left: -1em;
     list-style-type:none;
-    display: flex;
+    display: flex!important;
     font-size:17px;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }

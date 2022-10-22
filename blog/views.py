@@ -1,7 +1,7 @@
 from django.http import JsonResponse
-from django.shortcuts import render
+from django.shortcuts import redirect, render
 from django.views.generic import ListView , DetailView , TemplateView
-from .models import Like, Post
+from .models import Comments, Like, Post
 from django.core.paginator import Paginator
 
 class OurMenu(ListView):
@@ -9,6 +9,7 @@ class OurMenu(ListView):
     template_name = 'blog/Our-menu.html'
     paginate_by = 12
     context_object_name = 'posts'
+
 class PostDetailView(DetailView):
     model = Post
     template_name = 'blog/details.html'
@@ -27,13 +28,19 @@ class PostDetailView(DetailView):
         else:
             pass
         return context 
+    def post(self,request,slug):
+        posts = Post.objects.get(slug=slug)
+        parent_id = request.POST.get('parent_id')
+        message = request.POST.get('message')
+        Comments.objects.create(message=message, parent_id=parent_id , posts=posts , user=request.user)
+        return redirect('blog:detail' , slug)
 
 class SearchBox(TemplateView):
     queryset = None
     template_name = 'blog/Our-menu.html'
     def get(self, request, *args, **kwargs):
         q = request.GET.get('q')
-        queryset = Post.objects.filter(title_for_show__icontains = q)
+        queryset = Post.objects.filter(important_title__icontains = q)
         page_number = request.GET.get('page')
         paginator = Paginator(queryset , 12)
         objects = paginator.get_page(page_number)
@@ -47,3 +54,4 @@ def like(request , slug , pk):
     except:
         Like.objects.create(posts_id=pk , users_id = request.user.id)
         return JsonResponse({"response" : "liked"})
+

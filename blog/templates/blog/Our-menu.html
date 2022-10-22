@@ -13,7 +13,7 @@ blog
     <div class="box-container">
         {% for post in posts %}
         <div class="box">
-            <img src="{{post.image.url}}" alt="">
+            <a href="details/{{ post.slug }}"><img src="{{post.image.url}}" alt=""></a>
             <h3><a href="details/{{ post.slug }}">{{post.important_title}}</a></h3>
             <div class="price">${{post.price}}<span class="discount-style">${{post.discount}}</span></div>
             <div class="likecount-viewcount">

@@ -28,8 +28,8 @@ class Edite_Profile_Form(forms.ModelForm):
         model=User
         fields=['Full_name', 'username' , 'email' , 'phone' , 'image']
         widgets={
-            'username':forms.TextInput(attrs={'class':'email-input' , 'placeholder':'نام کاربری'}),
-            'Full_name' :forms.TextInput(attrs={'class':'email-input' , 'placeholder':'نام و نام خانوادگی'}),
-            'phone' :forms.TextInput(attrs={'class':'email-input' , 'placeholder':'شماره تلفن'}),
-            'email' :forms.TextInput(attrs={'class':'email-input' , 'placeholder':'پست الکترونیک'}),
+            'username':forms.TextInput(attrs={'class':'email-input' , 'placeholder':'username'}),
+            'Full_name' :forms.TextInput(attrs={'class':'email-input' , 'placeholder':'Fullname'}),
+            'phone' :forms.TextInput(attrs={'class':'email-input' , 'placeholder':'phone'}),
+            'email' :forms.TextInput(attrs={'class':'email-input' , 'placeholder':'email'}),
         }

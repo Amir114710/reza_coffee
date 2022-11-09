@@ -5,6 +5,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" sizes="1920*1920" href="{% static "img/icon-save.png" %}">
     <link rel="stylesheet" href="{% static "css/style.css" %}">
     <link rel="stylesheet" href="{% static "css/responsive-menu.css" %}">
     <link rel="stylesheet" href="{% static "css/form-style.css" %}">
@@ -12,6 +13,7 @@
     <link rel="stylesheet" href="{% static "css/details.css" %}">
     <link rel="stylesheet" href="{% static "css/font-awesome.css" %}">
     <link rel="stylesheet" href="{% static "css/font-awesome.min.css" %}">
+    <link rel="stylesheet" href="{% static "css/style-profile.css" %}">
     <link rel="stylesheet" href="{% static "fonts/fontawesome-webfont.eot" %}">
     <link rel="stylesheet" href="{% static "fonts/fontawesome-webfont.svg" %}">
     <link rel="stylesheet" href="{% static "fonts/fontawesome-webfont.ttf" %}">
@@ -42,7 +44,7 @@
                     <li><a href="{%  url 'home_app:home' %}"><i class="fa-solid fa-house"></i>Home</a></li>
                     <li><a href="#container"><i class="fa-solid fa-address-card"></i>About</a></li>
                     <li><a href="#menu-style-4"><i class="fa-solid fa-bars" class="bars-icon"></i>OurMenu</a></li>
-                    <li><a href="#contact"><i class="fa-solid fa-id-badge"></i>ContactUs</a></li>
+                    <li><a href="{% url 'home_app:contact' %}"><i class="fa-solid fa-id-badge"></i>ContactUs</a></li>
                 </ul>
                 <!-- <ul class="ul-style">
                     <li class="li-style"><i class="fa-solid fa-house"></i>Home</li>
@@ -60,7 +62,7 @@
                     <!-- <span style="position: relative;top:-0.1em;"><i class="fa-solid fa-user"></i><i class="fa-solid fa-caret-down"></i></span> -->
                     <div class="dropdown-content">
                     {% if request.user.is_authenticated %}
-                    <a href="#"><i class="fa-solid fa-user"></i>profile</a>
+                    <a href="{% url 'account:profile' %}"><i class="fa-solid fa-user"></i>profile</a>
                     <a href="#"><i class="fa-solid fa-heart"></i>favorite</a>
                     <a href="{% url 'account:logout' %}"><i class="fa-solid fa-arrow-right-from-bracket" style="margin-right:0.3em;"></i>logout</a>
                     {% else %}

@@ -469,9 +469,11 @@ text-decoration: line-through;
 #btn-contact{
   margin-top:-0.5em;
 }
-#message{
-  background:none;
-  border: none;
+.message{
+  background:none!important;
+  border: none!important;
+  width: 10em;
+  height: 50em;
 }
 
 @media (max-width:991px){

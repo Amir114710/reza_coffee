@@ -6,6 +6,11 @@ blog
 {% endblock %}
 {% block content %}
 <section class="menu" id="menu">
+    {% if errors %}
+        {% for item in errors %}
+            <p class="text text-danger bg-white rounded" dir="rtl">{{item}}</p>
+        {% endfor %}
+    {% endif %}
     <div class="menu-us-name" id="menu-name-3">
         <span class="Us-style">OUR</span>MENU
     </div>

@@ -1,0 +1,55 @@
+{% extends "base.html"%}
+{% block title %}
+profile
+{% endblock %}
+{% block content %}
+<div class="profile-div">
+    <div class="row">
+        <div class="col-sm-4">
+            <div class="username-profile">
+                <p>username:</p>
+                <div class="username-result">
+                    {% if request.user.username != None %}
+                    <p>{{request.user.username}}</p>
+                    {% else %}
+                    <p>__________________</p>
+                    {% endif %}
+                </div>
+            </div>
+            <div class="Fullname-profile">
+                <p>Fullname:</p>
+                <div class="Fullname-result">
+                    {% if request.user.Full_name != None %}
+                    <p>{{request.user.Full_name}}</p>
+                    {% else %}
+                    <p>__________________</p>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-8" id="email-phone">
+            <div class="email-profile">
+                <p>email:</p>
+                <div class="email-result">
+                    {% if request.user.email != None %}
+                    <p>{{request.user.email}}</p>
+                    {% else %}
+                    <p>__________________</p>
+                    {% endif %}
+                </div>
+            </div>
+            <div class="phone-profile">
+                <p>phone:</p>
+                <div class="phone-result">
+                    {% if request.user.phone != None %}
+                    <p>{{request.user.phone}}</p>
+                    {% else %}
+                    <p>__________________</p>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+    </div>
+    <a href="{% url 'account:edit_profile' %}" class="edit-profile-link">+ edit profile</a>
+</div>
+{% endblock %}

@@ -42,6 +42,7 @@ class User(AbstractBaseUser):
         verbose_name='پست الکترونیک',
         max_length=255,
     )
+    username = models.CharField(max_length=200, verbose_name='نام کاربری' ,unique=True , null=True, blank=True)
     phone = models.CharField(max_length=12 , verbose_name='شماره تلفن', default='0' ,unique=True,)
     image = models.ImageField(upload_to='UserImage' , verbose_name='عکس کاربر' , null=True, blank=True)
     Full_name = models.CharField(max_length=200 , verbose_name='نام کامل' , null=True, blank=True)

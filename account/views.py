@@ -1,14 +1,15 @@
 from django.shortcuts import render , redirect , reverse
 from django.views.generic import FormView , TemplateView , CreateView
 from uuid import uuid4
-from mixins import LoginRequirdMixins
+from mixins import LoginRequirdMixins , LogoutRequirdMixins
 from django.urls import reverse_lazy
 from django.contrib.auth import login , authenticate , logout
 import ghasedakpack
 import requests
-from .form import RegisterForm , OtpForm
+from .form import RegisterForm , OtpForm , Edite_Profile_Form
 from random import randint
 from .models import OTP, User
+
 SMS = ghasedakpack.Ghasedak("8534236d76060f342738a94b4ca72c")
 class OtpRegisterationView(LoginRequirdMixins , FormView):
     template_name = 'account/register.html'
@@ -22,6 +23,7 @@ class OtpRegisterationView(LoginRequirdMixins , FormView):
         OTP.objects.create(phone = cd['phone'],code = random_code , token = token)
         print(random_code)
         return redirect(reverse('account:check_otp') + f'?token={token}')
+
 class CheckOtpCode(FormView):
     template_name = 'account/otp_form.html'
     form_class = OtpForm
@@ -38,9 +40,30 @@ class CheckOtpCode(FormView):
         else:
             form.add_error(cd['code'] , 'this information is not correct')
         return render(self.request , self.template_name , {'form':form})
+
 def logout_user(request):
     if request.user.is_authenticated:
         logout(request)
         return redirect('home_app:home')
+    else:
+        return redirect('home_app:home')
+
+
+class ProfileView(LogoutRequirdMixins , TemplateView) :
+    template_name = 'account/profile.html'
+
+
+def profile_edite(request):
+    if request.user.is_authenticated == True:
+        user = request.user
+        form = Edite_Profile_Form(instance=user)
+        if request.method == 'POST':
+            form = Edite_Profile_Form(request.POST  , request.FILES ,instance=user)
+            if form.is_valid():
+                form.save()
+                return redirect('account:profile')
+        else:
+            form = Edite_Profile_Form(instance=user)
+        return render(request , 'account/edit_profile.html' , {'form':form})
     else:
         return redirect('home_app:home')

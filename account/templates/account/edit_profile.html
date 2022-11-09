@@ -1,0 +1,43 @@
+{% extends "base.html"%}
+{% load static %}
+{% block title %}
+edit profile
+{% endblock %}
+{% block content %}
+<form action="" method="post">
+    {% csrf_token %}
+    <div class="profile-div" id="profile-eidt">
+        <div class="row">
+            <div class="col-sm-4">
+                <div class="username-profile">
+                    <p>username:</p>
+                    <div class="username-result">
+                        {{form.username}}
+                    </div>
+                </div>
+                <div class="Fullname-profile">
+                    <p>Fullname:</p>
+                    <div class="Fullname-result">
+                        {{form.Full_name}}
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-8" id="email-phone">
+                <div class="email-profile">
+                    <p>email:</p>
+                    <div class="email-result">
+                        {{form.email}}
+                    </div>
+                </div>
+                <div class="phone-profile">
+                    <p>phone:</p>
+                    <div class="phone-result">
+                        {{form.phone}}
+                    </div>
+                </div>
+            </div>
+            <button class="btn btn-danger">Submite</button>
+        </div>
+    </div>
+</form>
+{% endblock %}

@@ -2,6 +2,8 @@ from django import forms
 from django.core.exceptions import ValidationError
 from django.core import validators
 
+from account.models import User
+
 
 class RegisterForm(forms.Form):
     phone = forms.CharField(widget = forms.TextInput(attrs={'class': 'phone-regiestraion' , 'placeholder':'Your Nmber'}) , validators=[validators.MaxLengthValidator(11)])
@@ -20,3 +22,14 @@ class OtpForm(forms.Form):
         if len(code)<4:
             raise ValidationError("this code is invalid")
         return code
+
+class Edite_Profile_Form(forms.ModelForm):
+    class Meta:
+        model=User
+        fields=['Full_name', 'username' , 'email' , 'phone' , 'image']
+        widgets={
+            'username':forms.TextInput(attrs={'class':'email-input' , 'placeholder':'نام کاربری'}),
+            'Full_name' :forms.TextInput(attrs={'class':'email-input' , 'placeholder':'نام و نام خانوادگی'}),
+            'phone' :forms.TextInput(attrs={'class':'email-input' , 'placeholder':'شماره تلفن'}),
+            'email' :forms.TextInput(attrs={'class':'email-input' , 'placeholder':'پست الکترونیک'}),
+        }

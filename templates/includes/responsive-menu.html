@@ -7,10 +7,10 @@
       <img src="images/pt-logo.png" alt="" width="100em" class="img-responsive" id="img-logo-2">
       <hr class="first-hr">
       <ul class="ul-seconde">
-        <li class="li-position"><i class="fa-solid fa-house"></i>Home</li>
-        <li class="li-position"><i class="fa-solid fa-address-card"></i>About</li>
-        <li class="li-position"><i class="fa-brands fa-shopify"></i>OurMenu</li>
-        <li class="li-position"><i class="fa-solid fa-id-badge"></i>Contact_Us</li>
+        <a href="{% url 'home_app:home' %}" style="font-size: 20px;"><li class="li-position"><i class="fa-solid fa-house"></i>Home</li></a>
+        <a href="{% url 'home_app:home' %}"style="font-size: 20px;"><li class="li-position"><i class="fa-solid fa-address-card"></i>About</li></a>
+        <a href="{% url 'blog:ourmenu' %}"style="font-size: 20px;"><li class="li-position"><i class="fa-brands fa-shopify"></i>OurMenu</li></a>
+        <a href="{% url 'home_app:contact' %}"style="font-size: 20px;"><li class="li-position"><i class="fa-solid fa-id-badge"></i>Contact_Us</li></a>
         <form action="{% url 'blog:search' %}">
           <input type="text" placeholder="search" style="background: none;border-radius: 10px;"name="q">
         </form>

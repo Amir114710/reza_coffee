@@ -51,19 +51,21 @@ Home
       ABOUT<span class="Us-style">US</span>
   </div>
       <div class="row" id="container">
-          <div class="col-sm-5">
-              <div class="about-image-class">
-                  <img src="{% static "img/coffee-g1323b0f34_1920.jpg" %}" alt="" width="100%" height="100%">
-              </div>
-          </div>
-          <div class="col-sm-7">
-              <div class="text-of-about">
-                  <h1>what make our coffee special?</h1>
-                  <p>Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
-                  <p class="text-lorem-about">Lorem ipsum dolor sit amet consectetur<br> adipisicing elit.Eaque ipsam odio nulla amet pariatur velit magnam,<br>sint magni provident eligendi quis sapiente nostrum ad doloribus laborum aut! Reiciendis,<br> ducimus quis.</p>
-              </div>
-              <button class="btn1-see-more">see more</button>
-          </div>
+      {% for post in about %}
+        <div class="col-sm-5">
+            <div class="about-image-class">
+                <img src="{{post.image.url}}" alt="" width="100%" height="100%">
+            </div>
+        </div>
+        <div class="col-sm-7">
+            <div class="text-of-about">
+                <h1>{{post.title}}</h1>
+                <p>{{post.little_discription}}</p>
+                <p class="text-lorem-about">{{post.discription}}</p>
+            </div>
+            <button class="btn1-see-more">see more</button>
+        </div>
+      {% endfor %}
       </div>
 </section>
 <section>

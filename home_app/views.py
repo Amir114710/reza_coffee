@@ -5,13 +5,14 @@ from blog.models import Post
 from blog.models import Poster
 from django.core.paginator import Paginator
 from .form import ContactUsForm 
-from .models import ContactUs
+from .models import ContactUs , About
 class HomeView(TemplateView):
     template_name = 'home_app/index.html'
     def get_context_data(self):
         context = super(HomeView, self).get_context_data()
         context['posts_6'] = Post.objects.all()[:12]
         context['Poster'] = Poster.objects.all()
+        context['about'] = About.objects.all()
         return context
     # def post(self):
     #     form = ContactUsForm(self.request.POST)

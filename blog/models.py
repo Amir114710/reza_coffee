@@ -22,7 +22,9 @@ class IPAddress(models.Model):
     class Meta:
         verbose_name = 'ای پی'
         verbose_name_plural = "ادرس ای پی"
-
+class objects_manager(models.Manager):
+    def sellers(self):
+        return self.filter(sellerinfo=True)
 class Post(models.Model):
     categories = models.ManyToManyField(Category , related_name='posts' , verbose_name='دسته بندی ها')
     title_for_show = models.CharField(max_length=100, verbose_name='نام کالا', null=True)
@@ -32,6 +34,8 @@ class Post(models.Model):
     price = models.IntegerField(null=True, verbose_name='قیمت اصلی')
     views = models.IntegerField(null=True, verbose_name='تعداد بازدید پست')
     image = models.ImageField(null=True, verbose_name='عکس کالا' , upload_to='product_image')
+    sellerinfo = models.BooleanField(default=False , verbose_name='قابل فروش')
+    objects = objects_manager()
     slug = models.SlugField(null=True,blank=True)
     created = models.DateTimeField(auto_now_add=True , null=True)
     hits = models.ManyToManyField(IPAddress , blank=True , related_name='hits' , verbose_name='بازدید ها')
@@ -54,6 +58,7 @@ class Post(models.Model):
     def admin_image(self):
         return '<img src="%s"/>' % self.image
     admin_image.allow_tags = True
+    
 class Like(models.Model):
     users = models.ForeignKey(User, related_name='likes2' , on_delete=models.CASCADE , verbose_name = 'کاربر')
     posts = models.ForeignKey(Post, related_name='likes2' , on_delete=models.CASCADE , verbose_name = 'مقاله')
@@ -97,3 +102,41 @@ class Comments(models.Model):
         verbose_name = 'کامنت'
         verbose_name_plural = 'کامنت ها'
         ordering = ('-created',)
+
+
+# _______________________________________________________________________________
+
+# class ShopCategory(models.Model):
+#     title = models.CharField(max_length=100, verbose_name='نام دسته بندی ها')
+#     created = models.DateTimeField(auto_now_add=True)
+
+#     def __str__(self):
+#         return self.title
+
+#     class Meta:
+#         ordering = ('-created',)
+#         verbose_name = "دسته بندی"
+#         verbose_name_plural = "   دسته بندی ها برای کالا های در دست فروش"
+
+# class Shop(models.Model):
+#     category = models.ManyToManyField(ShopCategory , related_name='shops' , verbose_name='دسته بندی ها')
+#     title_for_shows = models.CharField(max_length=100, verbose_name='نام کالا', null=True)
+#     important_titles = models.CharField(max_length=100,verbose_name='نام کالا به اینگلیسی' , null=True)
+#     discriptions = models.TextField(null=True, verbose_name='توضیحات')
+#     discounts = models.IntegerField(null=True, verbose_name='قیمت تخفیف خورده')
+#     prices = models.IntegerField(null=True, verbose_name='قیمت اصلی')
+#     images = models.ImageField(null=True, verbose_name='عکس کالا' , upload_to='shop_image')
+#     slugs = models.SlugField(null=True,blank=True)
+#     createds = models.DateTimeField(auto_now_add=True , null=True)
+
+#     def __str__(self):
+#         return f'{self.important_titles}--{self.discriptions}'
+
+#     class Meta:
+#         ordering = ('-createds',)
+#         verbose_name = 'فروشگاه'
+#         verbose_name_plural = "ایجاد پست برای فروش"
+
+#     def save(self, *args, **kwargs):
+#         self.slugs = slugify(self.important_titles)
+#         super(Shop , self).save(*args, **kwargs)

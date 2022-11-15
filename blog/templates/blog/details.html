@@ -87,8 +87,8 @@
                 {% endif %}
               </div>
               <div class="username-user">
-                {% if request.user.Full_name != None %}
-                <p>{{comment.user.Full_name}}</p>
+                {% if request.user.username != None %}
+                <p>{{comment.user.username}}</p>
                 {% else %}
                 <p>{{comment.user.phone}}</p>
                 {% endif %}

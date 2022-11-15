@@ -1,7 +1,7 @@
 from django.http import JsonResponse
 from django.shortcuts import redirect, render
 from django.views.generic import ListView , DetailView , TemplateView
-from .models import Comments, Like, Post
+from .models import Comments, Like, Post 
 from django.core.paginator import Paginator
 
 class OurMenu(ListView):
@@ -34,6 +34,16 @@ class PostDetailView(DetailView):
         message = request.POST.get('message')
         Comments.objects.create(message=message, parent_id=parent_id , posts=posts , user=request.user)
         return redirect('blog:detail' , slug)
+
+class ShopView(ListView):
+    model = Post
+    template_name = 'blog/shop.html'
+    paginate_by = 12
+    context_object_name = 'products'
+    def get_context_data(self, *args, **kwargs):
+        context = super(ShopView, self).get_context_data(*args, **kwargs)
+        context['products'] = Post.objects.sellers()
+        return context
 
 class SearchBox(TemplateView):
     queryset = None

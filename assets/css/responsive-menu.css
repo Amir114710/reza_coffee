@@ -353,4 +353,29 @@ body {
   .contact.row{
     padding:2em;
   }
+  #cart{
+    display: none;
+  }
+  .maketitle-of-page {
+    position: absolute;
+    width: 60%;
+    border-bottom: 1px solid #fff;
+    /* position: relative; */
+    left: 4em;
+    top: 9em;
+  }
+  .span-br{
+    display: block;
+  }
+  .continueto-shopping{
+    border: 1px solid rgb(177, 177, 177);
+    width: 20em;
+    height: 20em;
+    border-radius:10px;
+    position: absolute;
+    left: 4.5em;
+    top: 8em;
+    color: white;
+    text-align: center;
+  }
 }

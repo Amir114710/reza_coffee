@@ -4,6 +4,7 @@ body{
     font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif!important;
     overflow-x: hidden;
     background-color:black !important;
+    transition:0.5s linear;
 }
 #navbar-header{
     color: white !important;
@@ -33,12 +34,10 @@ body{
   text-align: center;
   font-weight: 600;
 }
-
 .nav * {
   box-sizing: border-box;
   transition: all .35s ease;
 }
-
 .nav li {
   display: inline-block;
   list-style: outside none none;
@@ -52,7 +51,6 @@ body{
   text-decoration: none;
   font-size: 20px;
 }
-
 .nav a::before,
 .nav a::after {
   content: '';
@@ -62,7 +60,6 @@ body{
   transition: all .35s ease;
   opacity: 0;
 }
-
 .nav a::before {
   content: '';
   right: 0;
@@ -71,7 +68,6 @@ body{
   border-right: 3px solid #CC8126;
   transform: translate(-100%, 50%);
 }
-
 .nav a:after {
   content: '';
   left: 0;
@@ -80,15 +76,17 @@ body{
   border-left: 3px solid #CC8126;
   transform: translate(100%, -50%)
 }
-
 .nav a:hover:before,
 .nav a:hover:after{
   transform: translate(0,0);
   opacity: 1;
 }
-
 .nav a:hover {
   color: rgb(0, 0, 0);
+}
+.active1{
+  color: rgb(0, 0, 0)!important;
+  border-bottom:1px solid #CC8126;
 }
 .bars-icon{
     color: #fff;
@@ -113,55 +111,196 @@ body{
 #user:hover{
     color: #CC8126;
 }
-    /* Style The Dropdown Button */
-    .dropbtn {
-      background:none;
-      color: rgb(255, 255, 255);
-      padding: none;
-      font-size: 17px;
-      border:none;
-      cursor: pointer;
-      width: 3.3em;
-      height: 2em;
-      margin-left: -0.6em;
-    }
-    
-    /* The container <div> - needed to position the dropdown content */
-    .dropdown {
-      display: inline-block;
-    }
-    
-    /* Dropdown Content (Hidden by Default) */
-    .dropdown-content {
-      display: none;
-      position: absolute;
-      margin-left:-5em ;
-      background-color: #ffffff;
-      min-width: 160px;
-      box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
-      z-index: 1;
-    }
-    
-    /* Links inside the dropdown */
-    .dropdown-content a {
-      color: black;
-      padding: 12px 16px;
-      text-decoration: none;
-      display: block;
-    }
-    
-    /* Change color of dropdown links on hover */
-    .dropdown-content a:hover {background-color: #f1f1f1}
-    
-    /* Show the dropdown menu on hover */
-    .dropdown:hover .dropdown-content {
-      display: block;
-    }
-    
-    /* Change the background color of the dropdown button when the dropdown content is shown */
-    /* .dropdown:hover .dropbtn {
-      background-color: #3e8e41;
-    } */
+#cart{
+  margin-right: 1em!important;
+  transition:0.2s linear;
+  color: #FFFFFF;
+}
+#cart:hover{
+  color: #CC8126;
+}
+.cart-activate{
+  color: #CC8126!important;
+}
+.right-of-menu .cart-2{
+  color: white !important;
+}
+.product-cart{
+  width: 90%!important;
+  background-color: #212121;
+  height: 7em!important;
+  position: absolute;
+  border-radius: 10px;
+}
+.image-product-cart{
+  width: 4em;
+  height: 4em;
+  border-radius: 50%;
+  background:none;
+  border: 1px solid rgb(95, 95, 95);
+}
+.product-image-cart{
+  border-radius: 50%!important;
+}
+.products-name-cart{
+  width: 15em;
+  height: 2em;
+  font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif!important;
+  font-size:20px;
+  color: #fff;
+  position: absolute;
+  left: 3.5em;
+  top:0.5em;
+}
+.continueto-shopping{
+  border: 1px solid rgb(177, 177, 177);
+  width: 20em;
+  height: 20em;
+  border-radius:10px;
+  position: absolute;
+  left: 35.5em;
+  top: 8em;
+  color: white;
+  text-align: center;
+  font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif!important;
+}
+.item-count{
+  color: red!important;
+  font-size:25px;
+  text-align: left;
+  margin-top: -0.5em;
+  position: absolute;
+  left: 0.5em;
+}
+.data-item-count{
+  color: green!important;
+  font-size:25px;
+  position: absolute;
+  top: 0em;
+  left:8em;
+}
+.price-item-continueto-shopping{
+  color: red!important;
+  font-size:25px;
+  text-align: left;
+  margin-top: -0.5em;
+  position: absolute;
+  left: 0.5em;
+  top: 5em;
+}
+.discount-item-continueto-shopping{
+  color: red!important;
+  font-size:25px;
+  text-align: left;
+  margin-top: -0.5em;
+  position: absolute;
+  left: 0.5em;
+  top: 6.5em;
+}
+.border-hr{
+  border-bottom: 1px solid rgb(149, 149, 149);
+  position: relative;
+  top: 7.5em;
+}
+.complete-item-continueto-shopping{
+  color: red!important;
+  font-size:25px;
+  text-align: left;
+  margin-top: -0.5em;
+  position: absolute;
+  left: 0.5em;
+  top: 8.5em;
+}
+#Continues-carts{
+  position: absolute;
+  left: 5em;
+  top:17em;
+  width: 10em!important;
+  text-align: center;
+}
+.span-br{
+  display: none;
+}
+.display-width{
+  width: 1920px;
+  height: 1080px;
+  background-color: #ffffff!important;
+  display: none;
+  position: absolute;
+  top: -10em;
+}
+.fa-bell{
+  position: relative;
+  left: 0em;
+}
+#dropbtn-content{
+  width: 20em!important;
+  left: -4em;
+}
+.notification-image{
+  /* width: 0.5em;
+  height: 0.5em; */
+  margin-top: 0.5em!important;
+  margin-left: -15em!important;
+}
+.content-notification{
+  width: 15em!important;
+  height: 3em;
+  border: 1px solid rgb(255, 255, 255);
+  color: #13131A;
+  position: absolute;
+  left: 5em;
+  top: 0.5em;
+}
+/* Style The Dropdown Button */
+.dropbtn {
+  background:none;
+  color: rgb(255, 255, 255);
+  padding: none;
+  font-size: 17px;
+  border:none;
+  cursor: pointer;
+  width: 3.3em;
+  height: 2em;
+  margin-left: -0.6em;
+}
+
+/* The container <div> - needed to position the dropdown content */
+.dropdown {
+  display: inline-block;
+}
+
+/* Dropdown Content (Hidden by Default) */
+.dropdown-content {
+  display: none;
+  position: absolute;
+  margin-left:-5em ;
+  background-color: #ffffff;
+  min-width: 160px;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  z-index: 1;
+}
+
+/* Links inside the dropdown */
+.dropdown-content a {
+  color: black;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+}
+
+/* Change color of dropdown links on hover */
+.dropdown-content a:hover {background-color: #f1f1f1}
+
+/* Show the dropdown menu on hover */
+.dropdown:hover .dropdown-content {
+  display: block;
+}
+
+/* Change the background color of the dropdown button when the dropdown content is shown */
+/* .dropdown:hover .dropbtn {
+  background-color: #3e8e41;
+} */
 #search{
     transition:0.2s linear;
 }
@@ -222,22 +361,42 @@ body{
       width: 100%;
     }
 } */
+.message-box{
+  position: absolute;
+  top:45em ;
+  left:1em;
+}
+.message-icon{
+  width: 6em;
+  height: 6em;
+  border-radius:50%;
+  text-align: center;
+  background-color: rgb(113, 113, 113);
+  position:fixed;
+}
+#message-icon{
+  font-size: 45px;
+  margin-top: 0.5em;
+}
 /* ____________________________________________________________________ */
 #myCarousel{
     width:110em!important;
     height: 45em !important;
     margin-left: -15em;
     margin-top:2em;
+    border: none;
 }
 #carousel-item-container{
     position: relative;
     top:-4em;
     margin-top:2em;
+    border: none;
 }
 #image-style-carousel-my{
     width:100%;height:45em;
     background:linear-gradient(rgba(24, 24, 24, 0.75),rgba(36, 36, 36, 0.75));
     mix-blend-mode: overlay;
+    border: none;
 }
 .title-first-image{
     position:absolute;
@@ -249,6 +408,7 @@ body{
     width: 20em;
     text-align: center;
     text-shadow: 2px 2px 5px rgb(0, 0, 0);
+    border: none;
 }
 /* _________________________________________________________________________________ */
 .about-us-name{
@@ -494,6 +654,34 @@ text-decoration: line-through;
 #add-to-cart-btn{
   background-color: rgb(140, 65, 0)!important;
   border: none!important;
+}
+.add-btn{
+  position: relative;
+  top: -3.5em;
+  left: 35em;
+}
+.shopping-cart{
+  width: 50em;
+  height: 25em;
+  position: relative;
+  left:10em;
+  top: 8em;
+}
+.maketitle-of-page{
+  width: 75%;
+  border-bottom: 1px solid #fff;
+  position: relative;
+  left: 10em;
+  top: 4em;
+}
+.maketitle{
+  color: #fff;
+  font-size:20px;
+  border-bottom:3px solid #CC8126;
+  width: 10%;
+  text-align: center;
+  position: relative;
+  top: 0.5em;
 }
 @media (max-width:991px){
 

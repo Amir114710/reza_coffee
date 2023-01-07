@@ -1,0 +1,42 @@
+{% extends "base.html" %}
+{% load static %}
+{% block title %}
+Cart
+{% endblock %}
+{% block content %}
+<section>
+    <div class="maketitle-of-page">
+        <p class="maketitle">add cart</p>
+    </div>
+    <div class="row">
+        <div class="col-sm-4">
+            <div class="shopping-cart">
+                <div class="product-cart">
+                    <div class="image-product-cart">
+                        <img src="{% static "img/coffee-g1323b0f34_1920.jpg" %}" alt="" width="100%" height="100%" class="product-image-cart">
+                    </div>
+                    <div class="products-name-cart">
+                        <p>coffee</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-8">
+            <div class="continueto-shopping">
+                <h3 class="continueto-shopping-cart">Continue Shopping</h3>
+                <hr>
+                <div class="item-continueto-shopping">
+                    <p class="item-count">ItemCount :<span class="data-item-count">5</span></p>
+                    <p class="price-item-continueto-shopping">Price :<span class="data-item-count">500$</span></p>
+                    <p class="discount-item-continueto-shopping">Discount :<span class="data-item-count">%5</span></p>
+                    <div class="border-hr"></div>
+                    <p class="complete-item-continueto-shopping">CompeletPrice :<span class="data-item-count">100$</span></p>
+                    <button class="btn btn-danger" id="Continues-carts">Continues</button>
+                </div>
+            </div>
+        </div>
+    </div>      
+</section>
+<span class="span-br"><br><br><br><br><br><br><br><br><br><br><br><br></span>
+<!-- {% include 'includes/message.html' %} -->
+{% endblock %}

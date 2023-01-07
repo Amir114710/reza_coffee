@@ -35,6 +35,15 @@ class PostDetailView(DetailView):
         Comments.objects.create(message=message, parent_id=parent_id , posts=posts , user=request.user)
         return redirect('blog:detail' , slug)
 
+def like(request , slug , pk):
+    try:
+        like = Like.objects.get(posts__slug = slug , users_id=request.user.id)
+        like.delete()
+        return JsonResponse({"response" : "unliked"})
+    except:
+        Like.objects.create(posts_id=pk , users_id = request.user.id)
+        return JsonResponse({"response" : "liked"})
+
 class ShopView(ListView):
     model = Post
     template_name = 'blog/shop.html'
@@ -56,12 +65,5 @@ class SearchBox(TemplateView):
         objects = paginator.get_page(page_number)
         return render(request, self.template_name, {'posts': objects})
 
-def like(request , slug , pk):
-    try:
-        like = Like.objects.get(posts__slug = slug , users_id=request.user.id)
-        like.delete()
-        return JsonResponse({"response" : "unliked"})
-    except:
-        Like.objects.create(posts_id=pk , users_id = request.user.id)
-        return JsonResponse({"response" : "liked"})
-
+class CartView(TemplateView):
+    template_name = 'blog/add_cart.html'

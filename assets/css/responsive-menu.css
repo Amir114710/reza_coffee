@@ -189,10 +189,25 @@ body {
   #like{
     margin-left: -4em!important;
     transition:0.2s linear;
-    margin-top: 0em;
+    position: relative;
+    top: -1.9em;
   }
   #user{
-    
+    position: relative;
+    top: -2em;
+  }
+  .fa-bell{
+    position: relative;
+    left: -7em;
+  }
+  #dropbtn-content{
+    position: relative;
+    left: -5em;
+  }
+  .btn1-see-more{
+    position: relative;
+    top: 4em;
+    left: 7.5em;
   }
   #myCarousel{
     width:39.6em!important;

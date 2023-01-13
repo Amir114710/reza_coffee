@@ -6,6 +6,8 @@ from blog.models import Poster
 from django.core.paginator import Paginator
 from .form import ContactUsForm 
 from .models import ContactUs , About
+from blog.models import Notification
+
 class HomeView(TemplateView):
     template_name = 'home_app/index.html'
     def get_context_data(self):

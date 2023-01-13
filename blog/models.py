@@ -103,7 +103,30 @@ class Comments(models.Model):
         verbose_name_plural = 'کامنت ها'
         ordering = ('-created',)
 
+class Notification(models.Model):
+    user = models.ManyToManyField(User , related_name='notifications' , verbose_name="انتخاب کاربر")
+    content = models.TextField(verbose_name="متن اعلان")
+    created = models.DateTimeField(auto_now_add=True)
 
+    def __str__(self):
+        return self.content
+
+    class Meta:
+        verbose_name = 'اعلان'
+        verbose_name_plural = 'اعلان ها'
+        ordering = ('-created',)
+        
+# class NotificationAll(models.Model):
+#     content = models.TextField()
+#     created = models.DateTimeField(auto_now_add=True)
+
+#     def __str__(self):
+#         return self.content
+        
+#     class Meta:
+#         verbose_name = 'اعلان'
+#         verbose_name_plural = 'اعلان های همگانی'
+#         ordering = ('-created',)
 # _______________________________________________________________________________
 
 # class ShopCategory(models.Model):

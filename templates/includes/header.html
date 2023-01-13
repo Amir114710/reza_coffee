@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="icon" sizes="1920*1920" href="{% static "img/icon-save.png" %}">
+    <link rel="icon" sizes="1080*1920" href="{% static "img/Untitled-1-Recovered.png" %}">
     <link rel="stylesheet" href="{% static "css/style.css" %}">
     <link rel="stylesheet" href="{% static "css/responsive-menu.css" %}">
     <link rel="stylesheet" href="{% static "css/form-style.css" %}">
@@ -66,14 +66,23 @@
             </div>
             <div class="right-of-menu">
                 <div class="dropdown">
-                    <button class="dropbtn"><i class="fa-regular fa-bell">1</i></button>
+                    {% if request.user.notifications.count < 1 %}
+                    <button class="dropbtn"><i class="fa-regular fa-bell"></i></button>
+                    {% else %}
+                    <button class="dropbtn"><i class="fa-solid fa-bell">{{request.user.notifications.count}}</i></button>
+                    {% endif %}
                     <!-- <span style="position: relative;top:-0.1em;"><i class="fa-solid fa-user"></i><i class="fa-solid fa-caret-down"></i></span> -->
                     <div class="dropdown-content" id="dropbtn-content">
-                    {% if request.user.is_authenticated %}
-                        <p style="color: black; text-align : center;border-bottom: 1px solid black;"><span><img src="{% static "img/icon-save.png" %}" alt="" width="35%" height="70%%" class="notification-image"></span><p class="content-notification">Welcome to reza coffee</p></p>
-                    {% else %}
-                    <a href="{% url 'account:otp' %}"><i class="fa-solid fa-right-to-bracket" style="margin-right:0.3em;"></i>login/register</a>
-                    {% endif %}
+                        <div class="notification-beautiful">
+                        {% if request.user.is_authenticated %}
+                            {% for item in request.user.notifications.all %}
+                            <p style="color: rgb(255, 255, 255); text-align : center;"><span class="notification-image"><img src="{% static "img/Untitled-1-Recovered.png" %}" alt="" width="100%" height="100%"></span>{{item.content}}</p>
+                            <hr>
+                            {% endfor %}
+                        {% else %}
+                        <span class="notification-image"><img src="{% static "img/Untitled-1-Recovered.png" %}" alt="" width="100%" height="100%"></span><a style="text-align: center;transition: 0.2 linear;color: aliceblue;" href="{% url 'account:otp' %}"><i class="fa-solid fa-right-to-bracket" style="margin-right:0.3em;"></i>login/register</a>
+                        {% endif %}
+                        </div>
                     </div>
                 </div>
                 <a href="{% url 'blog:cart' %}"><i class="fa-solid fa-cart-shopping" id="cart"></i></a>

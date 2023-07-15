@@ -9,8 +9,8 @@ import requests
 from .form import RegisterForm , OtpForm , Edite_Profile_Form
 from random import randint
 from .models import OTP, User
-
 SMS = ghasedakpack.Ghasedak("8534236d76060f342738a94b4ca72c")
+
 class OtpRegisterationView(LoginRequirdMixins , FormView):
     template_name = 'account/register.html'
     form_class = RegisterForm

@@ -13,7 +13,6 @@ class Category(models.Model):
         ordering = ('-created',)
         verbose_name = "دسته بندی"
         verbose_name_plural = "دسته بندی ها"
-
 class IPAddress(models.Model):
     ip_address = models.GenericIPAddressField(verbose_name='ادرس ای پی')
    
@@ -22,6 +21,7 @@ class IPAddress(models.Model):
     class Meta:
         verbose_name = 'ای پی'
         verbose_name_plural = "ادرس ای پی"
+
 class objects_manager(models.Manager):
     def sellers(self):
         return self.filter(sellerinfo=True)

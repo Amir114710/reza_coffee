@@ -83,11 +83,7 @@
             {% if comment.parent == None %}
             <div class="comment-sended">
               <div class="user-image">
-                <!-- {% if request.user.image.url != None %}
-                <img src="{{comment.user.image.url}}" alt="image" width="100%" height="100%"> -->
-                <!-- {% else %} -->
                 <img src="{% static "img/png-user-icon-icons-logos-emojis-users-2400.png" %}" alt="" width="100%" height="100%">
-                <!-- {% endif %} -->
               </div>
               <div class="username-user">
                 {% if request.user.username != None %}
@@ -109,11 +105,8 @@
             {% for reply in comment.replies.all %}
             <div class="replies">
               <div class="user-image">
-                {% if request.user.image.url != None %}
-                <img src="{{comment.user.image.url}}" alt="image" width="100%" height="100%">
-                {% else %}
                 <img src="{% static "img/png-user-icon-icons-logos-emojis-users-2400.png" %}" alt="" width="100%" height="100%">
-                {% endif %}              </div>
+              </div>
               <div class="username-user">
                 {% if request.user.Full_name != None %}
                 <p>{{comment.user.Full_name}}</p>
